@@ -1,37 +1,41 @@
 import React, { useState } from 'react'
-import { Menu, Grid, Segment } from 'semantic-ui-react'
-import {useMediaQuery} from 'react-responsive'
+import { Menu } from 'semantic-ui-react'
 
-const NavbarPanel = () => {
-
+const NavbarMobile = () => {
     const [activeItem, setActiveItem] = useState('home');
- 
+    const [toggle, setToggle] = useState(false)
 
     const handleItemClick = (e, {name}) =>{
         e.preventDefault();
         setActiveItem(name)
     }
 
+
   return (
-    <Segment >
-        <Menu secondary pointing>
+    <div>
+        <div className='navbarPanel_mobileBarSection'>
+            <div className='navbarPanel_appLogo'>LOGO</div>
+            <div><button onClick={()=>setToggle(!toggle)}> == </button></div>
+        </div>
+        {
+            toggle ? <Menu secondary pointing className='navbar_navbarMobile'>
             <Menu.Item 
                 name='home'
                 active={activeItem === 'home'}
-                color={activeItem === 'home' ? 'red' : ''}
+                color={activeItem === 'home' ? 'red' : 'black'}
                 onClick={handleItemClick}
             />
             
             <Menu.Item 
                 name='Contact Us'
                 active={activeItem === 'Contact Us'}
-                color={activeItem === 'Contact Us' ? 'red' : ''}
+                color={activeItem === 'Contact Us' ? 'red' : 'black'}
                 onClick={handleItemClick}
             /> 
             <Menu.Item 
                 name='About Us'
                 active={activeItem === 'About Us'}
-                color={activeItem === 'About Us' ? 'red' : ''}
+                color={activeItem === 'About Us' ? 'red' : 'black'}
                 onClick={handleItemClick}
             />
 
@@ -39,13 +43,15 @@ const NavbarPanel = () => {
                 <Menu.Item 
                     name='Login'
                     active={activeItem === 'Login'}
-                    color={activeItem === 'Login' ? 'blue' : ''}
+                    color={activeItem === 'Login' ? 'blue' : 'black'}
                     onClick={handleItemClick}
                 />
             </Menu.Menu>
-        </Menu>
-    </Segment>
+        </Menu> : null
+        }
+        
+    </div>
   )
 }
 
-export default NavbarPanel
+export default NavbarMobile

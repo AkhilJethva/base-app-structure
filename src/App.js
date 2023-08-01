@@ -8,10 +8,10 @@ import NavbarPanel from './components/NavbarPanel';
 function App() {
   return (
     <div className="App">
-        <NavbarPanel />
+        {/* <NavbarPanel />
         <Home />
         <About/>
-        <Contact />
+        <Contact /> */}
         <Footer />
     </div>
   );
