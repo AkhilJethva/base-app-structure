@@ -12,7 +12,10 @@ function App() {
         <Home />
         <About/>
         <Contact /> */}
-        <Footer />
+        {/* <Footer /> */}
+        {/* <Contact /> */}
+
+        <NavbarPanel/>
     </div>
   );
 }

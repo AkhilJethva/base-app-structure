@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 7px;
-  visibility: hidden;
+ 
 }
 .navbar_navbarMobile{
   position:static;
@@ -25,5 +25,8 @@
     .navbar_navbarMobile{
       flex-direction: column;
       align-items: center;
+    }
+    .navbarItem{
+      align-self: center !important;
     }
 }

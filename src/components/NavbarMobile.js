@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Image, Menu } from 'semantic-ui-react'
 
-const NavbarMobile = () => {
+
+const NavbarMobile = ({toggle=true}) => {
     const [activeItem, setActiveItem] = useState('home');
-    const [toggle, setToggle] = useState(false)
-
+    
     const handleItemClick = (e, {name}) =>{
         e.preventDefault();
         setActiveItem(name)
@@ -12,18 +12,16 @@ const NavbarMobile = () => {
 
 
   return (
-    <div>
-        <div className='navbarPanel_mobileBarSection'>
-            <div className='navbarPanel_appLogo'>LOGO</div>
-            <div><button onClick={()=>setToggle(!toggle)}> == </button></div>
-        </div>
+    <div>       
         {
             toggle ? <Menu secondary pointing className='navbar_navbarMobile'>
+                
             <Menu.Item 
                 name='home'
                 active={activeItem === 'home'}
                 color={activeItem === 'home' ? 'red' : 'black'}
                 onClick={handleItemClick}
+                className='navbarItem'
             />
             
             <Menu.Item 
@@ -31,20 +29,23 @@ const NavbarMobile = () => {
                 active={activeItem === 'Contact Us'}
                 color={activeItem === 'Contact Us' ? 'red' : 'black'}
                 onClick={handleItemClick}
+                className='navbarItem'
             /> 
             <Menu.Item 
                 name='About Us'
                 active={activeItem === 'About Us'}
                 color={activeItem === 'About Us' ? 'red' : 'black'}
                 onClick={handleItemClick}
+                className='navbarItem'
             />
 
-            <Menu.Menu position='right'>
+            <Menu.Menu position='right' className='navbarItem'>
                 <Menu.Item 
                     name='Login'
                     active={activeItem === 'Login'}
                     color={activeItem === 'Login' ? 'blue' : 'black'}
                     onClick={handleItemClick}
+                    className='navbarItem'
                 />
             </Menu.Menu>
         </Menu> : null

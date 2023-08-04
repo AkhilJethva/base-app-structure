@@ -1,50 +1,34 @@
 import React, { useState } from 'react'
-import { Menu, Grid, Segment } from 'semantic-ui-react'
 import {useMediaQuery} from 'react-responsive'
+import NavbarMobile from './NavbarMobile';
+import { Button, Image } from 'semantic-ui-react';
 
 const NavbarPanel = () => {
 
-    const [activeItem, setActiveItem] = useState('home');
- 
-
-    const handleItemClick = (e, {name}) =>{
-        e.preventDefault();
-        setActiveItem(name)
-    }
+    const [toggle, setToggle] = useState(false)
+    // reponsive logic
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1224px)'
+      })
+    
 
   return (
-    <Segment >
-        <Menu secondary pointing>
-            <Menu.Item 
-                name='home'
-                active={activeItem === 'home'}
-                color={activeItem === 'home' ? 'red' : ''}
-                onClick={handleItemClick}
-            />
-            
-            <Menu.Item 
-                name='Contact Us'
-                active={activeItem === 'Contact Us'}
-                color={activeItem === 'Contact Us' ? 'red' : ''}
-                onClick={handleItemClick}
-            /> 
-            <Menu.Item 
-                name='About Us'
-                active={activeItem === 'About Us'}
-                color={activeItem === 'About Us' ? 'red' : ''}
-                onClick={handleItemClick}
-            />
-
-            <Menu.Menu position='right'>
-                <Menu.Item 
-                    name='Login'
-                    active={activeItem === 'Login'}
-                    color={activeItem === 'Login' ? 'blue' : ''}
-                    onClick={handleItemClick}
-                />
-            </Menu.Menu>
-        </Menu>
-    </Segment>
+    <div>
+        { !isDesktopOrLaptop ? 
+            <>
+                <div className='navbarPanel_mobileBarSection'>
+                    <div className='navbarPanel_appLogo'>
+                        <Image alt="logo" src='https://upload.wikimedia.org/wikipedia/commons/f/f4/BMW_logo_%28gray%29.svg' avatar/>
+                    </div>
+                    <div>App Name</div>
+                    <div><Button primary basic onClick={()=>setToggle(!toggle)}> == </Button></div>
+                </div>
+                <NavbarMobile toggle={toggle}/>
+            </>
+        : 
+        <NavbarMobile/>
+    }
+    </div>
   )
 }
 
